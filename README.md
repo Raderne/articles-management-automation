@@ -3,10 +3,10 @@
 Articles Management Automation is a Windows Form C# project that allows users to manage articles and personnel in a SQL Server database. It has a login form that authenticates users based on their roles. Managers can add and remove personnel and list all the articles, while journalists can only add or remove articles.
 
 ## Screenshot
-![Screenshot 1](screenshots/Screenshot 1.png)
-![Screenshot 2](screenshots/Screenshot 2.png)
-![Screenshot 3](screenshots/Screenshot 3.png)
-![Screenshot 4](screenshots/Screenshot 4.png)
+![Screenshot 1](screenshots/Screenshot1.png)
+![Screenshot 2](screenshots/Screenshot2.png)
+![Screenshot 3](screenshots/Screenshot3.png)
+![Screenshot 4](screenshots/Screenshot4.png)
 
 ## Installation
 
