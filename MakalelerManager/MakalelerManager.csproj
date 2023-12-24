@@ -306,6 +306,9 @@
   <ItemGroup>
     <WCFMetadataStorage Include="Connected Services\TCKimlikService\" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="screenshots\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
