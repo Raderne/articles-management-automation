@@ -1,0 +1,224 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MakalelerManagerModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="KullaniciAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="KullaniciSifre" Type="nvarchar" MaxLength="50" />
+          <Property Name="role" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelID" Type="int" />
+        </EntityType>
+        <EntityType Name="Makaleler">
+          <Key>
+            <PropertyRef Name="MakaleID" />
+          </Key>
+          <Property Name="MakaleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MakaleYazar" Type="nvarchar" MaxLength="50" />
+          <Property Name="MakaleBaslik" Type="nvarchar" MaxLength="50" />
+          <Property Name="MakaleIcerik" Type="nvarchar(max)" />
+          <Property Name="MakaleKategori" Type="nvarchar" MaxLength="50" />
+          <Property Name="MakaleResim" Type="varbinary(max)" />
+          <Property Name="PersonelID" Type="int" />
+        </EntityType>
+        <EntityType Name="Personeller">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="PersonelAd" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelSoyad" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelTcNo" Type="bigint" />
+          <Property Name="PersonelDogumYil" Type="int" />
+          <Property Name="PersonelCinsiyet" Type="nvarchar" MaxLength="50" />
+          <Property Name="PersonelResim" Type="varbinary(max)" />
+        </EntityType>
+        <Association Name="FK_Kullanicilar_Personeller">
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="0..1" />
+          <End Role="Kullanicilar" Type="Self.Kullanicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personeller">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="Kullanicilar">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Makaleler_Personeller">
+          <End Role="Personeller" Type="Self.Personeller" Multiplicity="0..1" />
+          <End Role="Makaleler" Type="Self.Makaleler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personeller">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="Makaleler">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="MakalelerManagerModelStoreContainer">
+          <EntitySet Name="Kullanicilar" EntityType="Self.Kullanicilar" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Makaleler" EntityType="Self.Makaleler" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Personeller" EntityType="Self.Personeller" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Kullanicilar_Personeller" Association="Self.FK_Kullanicilar_Personeller">
+            <End Role="Personeller" EntitySet="Personeller" />
+            <End Role="Kullanicilar" EntitySet="Kullanicilar" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Makaleler_Personeller" Association="Self.FK_Makaleler_Personeller">
+            <End Role="Personeller" EntitySet="Personeller" />
+            <End Role="Makaleler" EntitySet="Makaleler" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MakalelerManagerModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Kullanicilar">
+          <Key>
+            <PropertyRef Name="KullaniciID" />
+          </Key>
+          <Property Name="KullaniciID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="KullaniciAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="KullaniciSifre" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="role" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelID" Type="Int32" />
+          <NavigationProperty Name="Personeller" Relationship="MakalelerManagerModel.FK_Kullanicilar_Personeller" FromRole="Kullanicilar" ToRole="Personeller" />
+        </EntityType>
+        <EntityContainer Name="MakalelerManagerEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Kullanicilars" EntityType="Self.Kullanicilar" />
+          <EntitySet Name="Personellers" EntityType="MakalelerManagerModel.Personeller" />
+          <AssociationSet Name="FK_Kullanicilar_Personeller" Association="MakalelerManagerModel.FK_Kullanicilar_Personeller">
+            <End Role="Personeller" EntitySet="Personellers" />
+            <End Role="Kullanicilar" EntitySet="Kullanicilars" />
+          </AssociationSet>
+          <EntitySet Name="Makalelers" EntityType="MakalelerManagerModel.Makaleler" />
+          <AssociationSet Name="FK_Makaleler_Personeller" Association="MakalelerManagerModel.FK_Makaleler_Personeller">
+            <End Role="Personeller" EntitySet="Personellers" />
+            <End Role="Makaleler" EntitySet="Makalelers" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="Personeller">
+          <Key>
+            <PropertyRef Name="PersonelID" />
+          </Key>
+          <Property Name="PersonelID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PersonelAd" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelSoyad" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelTcNo" Type="Int64" />
+          <Property Name="PersonelDogumYil" Type="Int32" />
+          <NavigationProperty Name="Kullanicilars" Relationship="MakalelerManagerModel.FK_Kullanicilar_Personeller" FromRole="Personeller" ToRole="Kullanicilar" />
+          <Property Name="PersonelCinsiyet" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="PersonelResim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <NavigationProperty Name="Makalelers" Relationship="MakalelerManagerModel.FK_Makaleler_Personeller" FromRole="Personeller" ToRole="Makaleler" />
+        </EntityType>
+        <Association Name="FK_Kullanicilar_Personeller">
+          <End Type="MakalelerManagerModel.Personeller" Role="Personeller" Multiplicity="0..1" />
+          <End Type="MakalelerManagerModel.Kullanicilar" Role="Kullanicilar" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personeller">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="Kullanicilar">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Makaleler">
+          <Key>
+            <PropertyRef Name="MakaleID" />
+          </Key>
+          <Property Name="MakaleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MakaleYazar" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MakaleBaslik" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MakaleIcerik" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MakaleKategori" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="MakaleResim" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="PersonelID" Type="Int32" />
+          <NavigationProperty Name="Personeller" Relationship="MakalelerManagerModel.FK_Makaleler_Personeller" FromRole="Makaleler" ToRole="Personeller" />
+        </EntityType>
+        <Association Name="FK_Makaleler_Personeller">
+          <End Type="MakalelerManagerModel.Personeller" Role="Personeller" Multiplicity="0..1" />
+          <End Type="MakalelerManagerModel.Makaleler" Role="Makaleler" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Personeller">
+              <PropertyRef Name="PersonelID" />
+            </Principal>
+            <Dependent Role="Makaleler">
+              <PropertyRef Name="PersonelID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="MakalelerManagerModelStoreContainer" CdmEntityContainer="MakalelerManagerEntities">
+          <EntitySetMapping Name="Kullanicilars">
+            <EntityTypeMapping TypeName="MakalelerManagerModel.Kullanicilar">
+              <MappingFragment StoreEntitySet="Kullanicilar">
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="role" ColumnName="role" />
+                <ScalarProperty Name="KullaniciID" ColumnName="KullaniciID" />
+                <ScalarProperty Name="KullaniciAd" ColumnName="KullaniciAd" />
+                <ScalarProperty Name="KullaniciSifre" ColumnName="KullaniciSifre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Personellers">
+            <EntityTypeMapping TypeName="MakalelerManagerModel.Personeller">
+              <MappingFragment StoreEntitySet="Personeller">
+                <ScalarProperty Name="PersonelResim" ColumnName="PersonelResim" />
+                <ScalarProperty Name="PersonelCinsiyet" ColumnName="PersonelCinsiyet" />
+                <ScalarProperty Name="PersonelDogumYil" ColumnName="PersonelDogumYil" />
+                <ScalarProperty Name="PersonelTcNo" ColumnName="PersonelTcNo" />
+                <ScalarProperty Name="PersonelSoyad" ColumnName="PersonelSoyad" />
+                <ScalarProperty Name="PersonelAd" ColumnName="PersonelAd" />
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Makalelers">
+            <EntityTypeMapping TypeName="MakalelerManagerModel.Makaleler">
+              <MappingFragment StoreEntitySet="Makaleler">
+                <ScalarProperty Name="PersonelID" ColumnName="PersonelID" />
+                <ScalarProperty Name="MakaleResim" ColumnName="MakaleResim" />
+                <ScalarProperty Name="MakaleKategori" ColumnName="MakaleKategori" />
+                <ScalarProperty Name="MakaleIcerik" ColumnName="MakaleIcerik" />
+                <ScalarProperty Name="MakaleBaslik" ColumnName="MakaleBaslik" />
+                <ScalarProperty Name="MakaleYazar" ColumnName="MakaleYazar" />
+                <ScalarProperty Name="MakaleID" ColumnName="MakaleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,319 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.props" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" />
+  <Import Project="..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props" Condition="Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C25C0C7C-1DE6-4006-B71E-0288AFC0FEA5}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>MakalelerManager</RootNamespace>
+    <AssemblyName>MakalelerManager</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.4.4\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1586.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.SqlServer.Types, Version=16.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.SqlServer.Types.160.1000.6\lib\net462\Microsoft.SqlServer.Types.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.ServiceModel" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Connected Services\TCKimlikService\Reference.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </Compile>
+    <Compile Include="DataSetMakaleler.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetMakaleler.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="FrmAnaEkran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmAnaEkran.Designer.cs">
+      <DependentUpon>FrmAnaEkran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmCalisanMakalelerListe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmCalisanMakalelerListe.Designer.cs">
+      <DependentUpon>FrmCalisanMakalelerListe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmGirisEkran.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmGirisEkran.Designer.cs">
+      <DependentUpon>FrmGirisEkran.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmKullaniciSifreDegistirme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmKullaniciSifreDegistirme.Designer.cs">
+      <DependentUpon>frmKullaniciSifreDegistirme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMakaleDuzenle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMakaleDuzenle.Designer.cs">
+      <DependentUpon>FrmMakaleDuzenle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMakaleEkleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMakaleEkleme.Designer.cs">
+      <DependentUpon>FrmMakaleEkleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmMakaleReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmMakaleReport.Designer.cs">
+      <DependentUpon>FrmMakaleReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPersonelEkle.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPersonelEkle.Designer.cs">
+      <DependentUpon>FrmPersonelEkle.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPersonelGuncelleme.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPersonelGuncelleme.Designer.cs">
+      <DependentUpon>FrmPersonelGuncelleme.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPersonelListele.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPersonelListele.Designer.cs">
+      <DependentUpon>FrmPersonelListele.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmPersonelReport.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmPersonelReport.Designer.cs">
+      <DependentUpon>FrmPersonelReport.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FrmTumMakaleler.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FrmTumMakaleler.Designer.cs">
+      <DependentUpon>FrmTumMakaleler.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Kullanicilar.cs">
+      <DependentUpon>MakalelerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Makaleler.cs">
+      <DependentUpon>MakalelerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MakalelerDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MakalelerDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MakalelerDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MakalelerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="MakalelerDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MakalelerDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="MakalelerManagerDataSet.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>MakalelerManagerDataSet.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Personeller.cs">
+      <DependentUpon>MakalelerDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="ChartReport.rdlc" />
+    <EmbeddedResource Include="FrmAnaEkran.resx">
+      <DependentUpon>FrmAnaEkran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmCalisanMakalelerListe.resx">
+      <DependentUpon>FrmCalisanMakalelerListe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmGirisEkran.resx">
+      <DependentUpon>FrmGirisEkran.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmKullaniciSifreDegistirme.resx">
+      <DependentUpon>frmKullaniciSifreDegistirme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMakaleDuzenle.resx">
+      <DependentUpon>FrmMakaleDuzenle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMakaleEkleme.resx">
+      <DependentUpon>FrmMakaleEkleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmMakaleReport.resx">
+      <DependentUpon>FrmMakaleReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPersonelEkle.resx">
+      <DependentUpon>FrmPersonelEkle.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPersonelGuncelleme.resx">
+      <DependentUpon>FrmPersonelGuncelleme.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPersonelListele.resx">
+      <DependentUpon>FrmPersonelListele.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmPersonelReport.resx">
+      <DependentUpon>FrmPersonelReport.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FrmTumMakaleler.resx">
+      <DependentUpon>FrmTumMakaleler.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="TableReport.rdlc" />
+    <EntityDeploy Include="MakalelerDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>MakalelerDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Connected Services\TCKimlikService\KPSPublic.wsdl" />
+    <None Include="Connected Services\TCKimlikService\MakalelerManager.TCKimlikService.TCKimlikNoDogrulaResponse.datasource">
+      <DependentUpon>Reference.svcmap</DependentUpon>
+    </None>
+    <None Include="DataSetMakaleler.xsc">
+      <DependentUpon>DataSetMakaleler.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetMakaleler.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetMakaleler.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="DataSetMakaleler.xss">
+      <DependentUpon>DataSetMakaleler.xsd</DependentUpon>
+    </None>
+    <None Include="MakalelerDB.edmx.diagram">
+      <DependentUpon>MakalelerDB.edmx</DependentUpon>
+    </None>
+    <None Include="MakalelerManagerDataSet.xsc">
+      <DependentUpon>MakalelerManagerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="MakalelerManagerDataSet.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>MakalelerManagerDataSet.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="MakalelerManagerDataSet.xss">
+      <DependentUpon>MakalelerManagerDataSet.xsd</DependentUpon>
+    </None>
+    <None Include="packages.config" />
+    <None Include="Properties\DataSources\DataSetMakaleler.datasource" />
+    <None Include="Properties\DataSources\Makaleler.datasource" />
+    <None Include="Properties\DataSources\MakalelerManager.DataSetMakalelerTableAdapters.QueriesTableAdapter.datasource" />
+    <None Include="Properties\DataSources\MakalelerManagerEntities.datasource" />
+    <None Include="Properties\DataSources\Personeller.datasource" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Connected Services\TCKimlikService\configuration91.svcinfo" />
+    <None Include="Connected Services\TCKimlikService\configuration.svcinfo" />
+    <None Include="Connected Services\TCKimlikService\Reference.svcmap">
+      <Generator>WCF Proxy Generator</Generator>
+      <LastGenOutput>Reference.cs</LastGenOutput>
+    </None>
+    <Content Include="MakalelerDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>MakalelerDB.Context.cs</LastGenOutput>
+      <DependentUpon>MakalelerDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="MakalelerDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>MakalelerDB.edmx</DependentUpon>
+      <LastGenOutput>MakalelerDB.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadataStorage Include="Connected Services\TCKimlikService\" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.SqlServer.Types.160.1000.6\build\net462\Microsoft.SqlServer.Types.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.props'))" />
+    <Error Condition="!Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\EntityFramework.6.4.4\build\EntityFramework.targets'))" />
+  </Target>
+  <Import Project="..\packages\EntityFramework.6.4.4\build\EntityFramework.targets" Condition="Exists('..\packages\EntityFramework.6.4.4\build\EntityFramework.targets')" />
+</Project>
